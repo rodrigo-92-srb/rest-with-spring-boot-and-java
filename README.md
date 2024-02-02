@@ -1,4 +1,4 @@
-# rest-with-spring-boot-and-java
+# Rest-with-spring-boot-and-java
 
 ## Technologies
 
