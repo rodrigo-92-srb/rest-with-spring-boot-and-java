@@ -41,4 +41,48 @@ public class MathController {
 		String number = strNumber.replaceAll(",", ".");
 		return number.matches("[-+]?[0-9]*\\.?[0-9]+");
 	}
+	
+	@RequestMapping("/sub/{numberOne}/{numberTwo}")
+	public Double subtraction(@PathVariable(value="numberOne") String numberOne,
+						@PathVariable(value="numberTwo") String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) - convertToDouble(numberTwo);
+		
+	}
+	
+	@RequestMapping("/mult/{numberOne}/{numberTwo}")
+	public Double multiplication(@PathVariable(value="numberOne") String numberOne,
+						@PathVariable(value="numberTwo") String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) * convertToDouble(numberTwo);
+		
+	}
+	
+	@RequestMapping("/div/{numberOne}/{numberTwo}")
+	public Double division(@PathVariable(value="numberOne") String numberOne,
+						@PathVariable(value="numberTwo") String numberTwo) throws Exception{
+		
+		if(!isNumeric(numberOne) || !isNumeric(numberTwo)) { 
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return convertToDouble(numberOne) / convertToDouble(numberTwo);
+		
+	}
+	
+	@RequestMapping("/squareroot/{number}")
+	public Double squareRoot(@PathVariable(value="number") String number) throws Exception{
+		
+		if(!isNumeric(number)) { 
+			throw new UnsupportedMathOperationException("Please set a numeric value!");
+		}
+		return Math.sqrt(convertToDouble(number));
+		
+	}
+	
 }
